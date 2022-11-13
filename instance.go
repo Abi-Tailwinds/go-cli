@@ -124,7 +124,7 @@ func main() {
 		}
 		if match1 {
 			IP = v[i+1]
-			if IP == "passed" {
+			if IP == `"passed"` {
 				log.Println("passed")
 				break
 			} else {
