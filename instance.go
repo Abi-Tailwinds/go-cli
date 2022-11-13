@@ -68,7 +68,6 @@ func vmcreate() (string, string) {
 	v := strings.Fields(s)
 	fmt.Println(v)
 	for i := 0; i < len(v); i++ {
-		log.Println(i, v[i])
 		match1, err1 := regexp.MatchString(str1, v[i])
 		if err1 != nil {
 			log.Println(err1)
