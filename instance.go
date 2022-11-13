@@ -53,7 +53,7 @@ func vmcreate() (string, string) {
                 log.Printf("STDERR of pulumi plugin  select command : %v\n", stderr.String())
         }
         log.Printf("Output of pulumi plugin  select command : %v\n", string(out7)) 
-	cmd := exec.Command("pulumi", "up", "--cwd", "/home/Abi-dev/pulumi/create-delete-aws-vm", "--config=vmname=awsclivm", "--config=subnetid=subnet-9cf64cbd", "--config=vpcid=vpc-9df038e0", "--config=keyname=awskey4", "-y")
+	cmd := exec.Command("pulumi", "up", "--cwd", "/home/Abi-dev/pulumi/create-delete-aws-vm", "--config=vmname=awsclivm", "--config=subnetid=subnet-9cf64cbd", "--config=vpcid=vpc-9df038e0", "--config=keyname=awskey4", "--non-interactive", "-y")
 	fmt.Println(cmd)
 	cmd.Stderr = &stderr
 	out, err := cmd.Output()
