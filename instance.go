@@ -11,7 +11,7 @@ import (
 )
 
 func vmcreate() (string, string) {
-	cmd := exec.Command("pulumi", "up", "--cwd", "pulumi/create-delete-aws-vm", "--config=vmname=awsclivm", "--config=subnetid=subnet-9cf64cbd", "--config=vpcid=vpc-9df038e0", "--config=keyname=awskey4")
+	cmd := exec.Command("pulumi", "up", "--cwd", "/home/Abi-dev/pulumi/create-delete-aws-vm", "--config=vmname=awsclivm", "--config=subnetid=subnet-9cf64cbd", "--config=vpcid=vpc-9df038e0", "--config=keyname=awskey4")
 	fmt.Println(cmd)
 	var stderr bytes.Buffer
 	cmd.Stderr = &stderr
