@@ -11,9 +11,50 @@ import (
 )
 
 func vmcreate() (string, string) {
+	cmd1 := exec.Command("bash","-c","pulumi login --local")
+        log.Printf("%v",cmd1)
+        var stderr bytes.Buffer
+        cmd1.Stderr = &stderr
+        out1, err1 := cmd1.Output()
+        if err1 != nil {
+                log.Printf("STDERR of pulumi login command : %v\n", stderr.String())
+        }
+        log.Printf("Output of pulumi login command : %v\n", string(out1))
+		cmd5 := exec.Command("pulumi","stack","init","dev1","--cwd","/home/Abi-dev/pulumi/create-delete-aws-vm")
+	log.Printf("%v", cmd5)
+	cmd5.Stderr = &stderr
+	out5, err5 := cmd5.Output()
+	if err5 != nil {
+		log.Printf("STEDERR OF pulumi stack init command: %v/n", stderr.String())
+	}
+	log.Printf("%v", string(out5))
+	cmd2 := exec.Command("pulumi","stack","select","dev1","--cwd","/home/Abi-dev/pulumi/create-delete-aws-vm")
+        log.Printf("%v",cmd2)
+        //var stderr bytes.Buffer
+        cmd2.Stderr = &stderr
+        out2, err2 := cmd2.Output()
+        if err2 != nil {
+                log.Printf("STDERR of pulumi stack select command : %v\n", stderr.String())
+        }
+        log.Printf("Output of pulumi stack select command : %v\n", string(out2))
+		cmd6 := exec.Command("pulumi","plugin","install","resource","aws","5.13.0","--cwd","/home/Abi-dev/pulumi/create-delete-aws-vm")
+        log.Printf("%v",cmd6)
+        cmd6.Stderr = &stderr
+        out6, err6 := cmd6.Output()
+        if err6 != nil {
+                log.Printf("STDERR of pulumi plugin  select command : %v\n", stderr.String())
+        }
+        log.Printf("Output of pulumi plugin  select command : %v\n", string(out6))
+	cmd7 := exec.Command("pulumi","config","set","aws:region","us-east-1","--cwd","/home/Abi-dev/pulumi/create-delete-aws-vm")
+        log.Printf("%v",cmd7)
+        cmd6.Stderr = &stderr
+        out7, err7 := cmd7.Output()
+        if err7 != nil {
+                log.Printf("STDERR of pulumi plugin  select command : %v\n", stderr.String())
+        }
+        log.Printf("Output of pulumi plugin  select command : %v\n", string(out7)) 
 	cmd := exec.Command("pulumi", "up", "--cwd", "/home/Abi-dev/pulumi/create-delete-aws-vm", "--config=vmname=awsclivm", "--config=subnetid=subnet-9cf64cbd", "--config=vpcid=vpc-9df038e0", "--config=keyname=awskey4", "-y")
 	fmt.Println(cmd)
-	var stderr bytes.Buffer
 	cmd.Stderr = &stderr
 	out, err := cmd.Output()
 	if err != nil {
