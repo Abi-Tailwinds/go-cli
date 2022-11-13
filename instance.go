@@ -77,11 +77,11 @@ func vmcreate() (string, string) {
 			log.Printf("%s", v[i+1])
 			log.Printf("%s", IP)
 		}
-		ID = v[44]
 		//log.Printf("%s", v[44])
 		//log.Printf("%s", ID)
 
 	}
+	ID = v[44]
 	log.Printf("%s", ID)
 	if IP[0] == '"' {
 		IP = IP[1:]
